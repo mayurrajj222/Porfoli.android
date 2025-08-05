@@ -15,8 +15,12 @@
       "dest": "/api/index.ts"
     },
     {
+      "src": "/assets/(.*)",
+      "dest": "/dist/spa/assets/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/dist/spa/$1"
+      "dest": "/dist/spa/index.html"
     }
   ],
   "functions": {

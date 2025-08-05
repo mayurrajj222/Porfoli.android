@@ -1,5 +1,4 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { handleDemo } from '../server/routes/demo';
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
   const { pathname } = new URL(req.url || '', `http://${req.headers.host}`);
@@ -22,10 +21,10 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
       break;
     
     case '/api/demo':
-      handleDemo(req, res);
+      res.status(200).json({ message: 'Hello from demo API!' });
       break;
     
     default:
-      res.status(404).json({ error: 'API endpoint not found' });
+      res.status(404).json({ error: 'API endpoint not found', pathname });
   }
 } 
