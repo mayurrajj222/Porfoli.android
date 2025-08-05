@@ -22,10 +22,5 @@
       "src": "/(.*)",
       "dest": "/dist/spa/index.html"
     }
-  ],
-  "functions": {
-    "api/index.ts": {
-      "maxDuration": 10
-    }
-  }
+  ]
 } 
