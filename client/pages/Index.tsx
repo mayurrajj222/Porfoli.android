@@ -72,8 +72,8 @@ export default function Index() {
   }, []);
 
   const skills = [
-    "Flutter", "React Native", "Kotlin", "Java", "Dart", "JavaScript", "TypeScript",
-    "Android SDK", "iOS Development", "Firebase", "SQLite", "REST APIs", "GraphQL"
+    "Flutter", "Java", "Kotlin", "C", "Dart", "React Native", "XML", "JavaScript",
+    "Android Studio", "WebStorm", "Firebase", "MongoDB", "Clerk", "Strapi", "Neon", "Expo"
   ];
 
   const services = [
@@ -189,12 +189,12 @@ export default function Index() {
         className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50"
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <motion.div 
+          <motion.div
             className="text-2xl font-bold text-primary"
             whileHover={{ scale: 1.1, color: "hsl(142, 76%, 50%)" }}
             transition={{ duration: 0.2 }}
           >
-            DevAndroid
+            Mayur Raj
           </motion.div>
           <nav className="hidden md:flex space-x-8">
             {["Home", "Services", "Portfolio", "About", "Contact"].map((item, index) => (
@@ -652,9 +652,9 @@ export default function Index() {
             viewport={{ once: true }}
           >
             {[
-              { icon: Mail, title: "Email", info: "your.email@example.com" },
-              { icon: Phone, title: "Phone", info: "+1 (555) 123-4567" },
-              { icon: MapPin, title: "Location", info: "Available Worldwide" }
+              { icon: Mail, title: "Email", info: "mayurrajj222@gmail.com" },
+              { icon: Phone, title: "Phone", info: "+91 7464072321" },
+              { icon: MapPin, title: "Location", info: "Muzaffarpur, Bihar" }
             ].map((contact, index) => (
               <motion.div
                 key={index}
