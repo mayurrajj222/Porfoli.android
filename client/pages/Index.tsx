@@ -1,12 +1,45 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Smartphone, Palette, Zap, Users, Star, Download, Github, Linkedin, Mail, Phone, MapPin, Code, Rocket, Sparkles } from "lucide-react";
-import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
+import {
+  Smartphone,
+  Palette,
+  Zap,
+  Users,
+  Star,
+  Download,
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  Code,
+  Rocket,
+  Sparkles,
+} from "lucide-react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useInView,
+  AnimatePresence,
+} from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 // Animated Counter Component
-function AnimatedCounter({ end, duration = 2 }: { end: number; duration?: number }) {
+function AnimatedCounter({
+  end,
+  duration = 2,
+}: {
+  end: number;
+  duration?: number;
+}) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -15,19 +48,19 @@ function AnimatedCounter({ end, duration = 2 }: { end: number; duration?: number
     if (isInView) {
       let startTime: number;
       const startValue = 0;
-      
+
       const animate = (currentTime: number) => {
         if (!startTime) startTime = currentTime;
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / (duration * 1000), 1);
-        
+
         setCount(Math.floor(startValue + (end - startValue) * progress));
-        
+
         if (progress < 1) {
           requestAnimationFrame(animate);
         }
       };
-      
+
       requestAnimationFrame(animate);
     }
   }, [isInView, end, duration]);
@@ -36,19 +69,27 @@ function AnimatedCounter({ end, duration = 2 }: { end: number; duration?: number
 }
 
 // Floating Icons Component
-function FloatingIcon({ icon: Icon, className, delay = 0 }: { icon: any; className: string; delay?: number }) {
+function FloatingIcon({
+  icon: Icon,
+  className,
+  delay = 0,
+}: {
+  icon: any;
+  className: string;
+  delay?: number;
+}) {
   return (
     <motion.div
       initial={{ y: 0, rotate: 0 }}
-      animate={{ 
+      animate={{
         y: [-10, 10, -10],
-        rotate: [-5, 5, -5]
+        rotate: [-5, 5, -5],
       }}
       transition={{
         duration: 4,
         repeat: Infinity,
         ease: "easeInOut",
-        delay
+        delay,
       }}
       className={className}
     >
@@ -67,60 +108,105 @@ export default function Index() {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   const skills = [
-    "Flutter", "React Native", "Kotlin", "Java", "Dart", "JavaScript", "TypeScript",
-    "Android SDK", "iOS Development", "Firebase", "SQLite", "REST APIs", "GraphQL"
+    "Flutter",
+    "Java",
+    "Kotlin",
+    "C",
+    "Dart",
+    "React Native",
+    "XML",
+    "JavaScript",
+    "Android Studio",
+    "WebStorm",
+    "Firebase",
+    "MongoDB",
+    "Clerk",
+    "Strapi",
+    "Neon",
+    "Expo",
   ];
 
   const services = [
     {
       icon: Smartphone,
-      title: "Native Android Development",
-      description: "High-performance native Android apps using Kotlin and Java with modern architecture patterns."
+      title: "React Native Development",
+      description:
+        "Cross-platform food delivery and healthcare apps with user authentication, real-time features, and clean UI design.",
     },
     {
       icon: Palette,
-      title: "Cross-Platform Apps",
-      description: "Beautiful Flutter and React Native apps that work seamlessly across iOS and Android."
+      title: "Flutter Development",
+      description:
+        "Beautiful Flutter apps including chat applications, games using Flame engine, and university result systems.",
     },
     {
       icon: Zap,
-      title: "Performance Optimization",
-      description: "Speed up your existing apps with advanced optimization techniques and best practices."
+      title: "Firebase Integration",
+      description:
+        "Expert in Firebase authentication, Firestore database, real-time messaging, and secure backend services.",
     },
     {
       icon: Users,
-      title: "UI/UX Implementation",
-      description: "Convert designs into pixel-perfect, responsive mobile interfaces with smooth animations."
-    }
+      title: "Mobile App Architecture",
+      description:
+        "Modern architecture patterns with clean code, efficient state management, and seamless user experiences.",
+    },
   ];
 
   const portfolio = [
     {
-      title: "E-Commerce Mobile App",
-      description: "Full-featured shopping app with payment integration",
-      tech: ["Flutter", "Firebase", "Stripe"],
+      title: "Food Delivery App",
+      description:
+        "React Native food ordering app with real-time menu display, cart management, and order tracking",
+      tech: ["React Native", "Firebase", "Expo"],
       rating: 4.9,
-      downloads: "50K+"
+      downloads: "Live",
     },
     {
-      title: "Social Media Platform",
-      description: "Real-time messaging and content sharing app",
-      tech: ["React Native", "GraphQL", "AWS"],
+      title: "REMIT Chat App",
+      description:
+        "Secure real-time chat app with double authentication and dynamic message storage",
+      tech: ["Flutter", "Firebase", "Supabase"],
       rating: 4.8,
-      downloads: "100K+"
+      downloads: "Live",
     },
     {
-      title: "Fitness Tracking App",
-      description: "Health monitoring with wearable device integration",
-      tech: ["Kotlin", "Room DB", "BLE"],
+      title: "Super Mario Game",
+      description:
+        "2D Super Mario-style game with character movement, collisions, and scoring system",
+      tech: ["Flutter", "Flame Engine"],
       rating: 4.7,
-      downloads: "25K+"
-    }
+      downloads: "Demo",
+    },
+    {
+      title: "Weather App",
+      description:
+        "Mobile weather app with real-time data, location-based forecasts, and clean responsive UI",
+      tech: ["React Native", "Expo", "API"],
+      rating: 4.6,
+      downloads: "Live",
+    },
+    {
+      title: "BEU Pro Result",
+      description:
+        "University app for students to access notices, results, and academic resources",
+      tech: ["Flutter"],
+      rating: 4.8,
+      downloads: "Live",
+    },
+    {
+      title: "Healthcare App",
+      description:
+        "Medical app with authentication, test report uploads, user reviews, and real-time chat",
+      tech: ["React Native", "Firebase"],
+      rating: 4.7,
+      downloads: "In Development",
+    },
   ];
 
   const containerVariants = {
@@ -128,9 +214,9 @@ export default function Index() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -140,9 +226,9 @@ export default function Index() {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const cardHoverVariants = {
@@ -152,19 +238,35 @@ export default function Index() {
       boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
       transition: {
         duration: 0.3,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-success-50 overflow-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 z-0">
-        <FloatingIcon icon={Code} className="absolute top-20 left-10" delay={0} />
-        <FloatingIcon icon={Smartphone} className="absolute top-40 right-20" delay={1} />
-        <FloatingIcon icon={Rocket} className="absolute bottom-40 left-20" delay={2} />
-        <FloatingIcon icon={Sparkles} className="absolute bottom-20 right-10" delay={3} />
+        <FloatingIcon
+          icon={Code}
+          className="absolute top-20 left-10"
+          delay={0}
+        />
+        <FloatingIcon
+          icon={Smartphone}
+          className="absolute top-40 right-20"
+          delay={1}
+        />
+        <FloatingIcon
+          icon={Rocket}
+          className="absolute bottom-40 left-20"
+          delay={2}
+        />
+        <FloatingIcon
+          icon={Sparkles}
+          className="absolute bottom-20 right-10"
+          delay={3}
+        />
       </div>
 
       {/* Mouse Follower */}
@@ -177,45 +279,44 @@ export default function Index() {
         transition={{
           type: "spring",
           damping: 20,
-          stiffness: 400
+          stiffness: 400,
         }}
       />
 
       {/* Header */}
-      <motion.header 
+      <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50"
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <motion.div 
+          <motion.div
             className="text-2xl font-bold text-primary"
             whileHover={{ scale: 1.1, color: "hsl(142, 76%, 50%)" }}
             transition={{ duration: 0.2 }}
           >
-            DevAndroid
+            Mayur Raj
           </motion.div>
           <nav className="hidden md:flex space-x-8">
-            {["Home", "Services", "Portfolio", "About", "Contact"].map((item, index) => (
-              <motion.a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-foreground hover:text-primary transition-colors"
-                whileHover={{ y: -2, scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {item}
-              </motion.a>
-            ))}
+            {["Home", "Services", "Portfolio", "About", "Contact"].map(
+              (item, index) => (
+                <motion.a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-foreground hover:text-primary transition-colors"
+                  whileHover={{ y: -2, scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {item}
+                </motion.a>
+              ),
+            )}
           </nav>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button className="bg-primary hover:bg-primary/90">
               <motion.div
                 animate={{ rotate: [0, 10, 0] }}
@@ -230,22 +331,19 @@ export default function Index() {
       </motion.header>
 
       {/* Hero Section */}
-      <motion.section 
-        id="home" 
+      <motion.section
+        id="home"
         className="py-20 px-4 relative z-10"
         style={{ y: parallaxY }}
       >
-        <motion.div 
+        <motion.div
           className="container mx-auto text-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           <div className="max-w-4xl mx-auto">
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-            >
+            <motion.div variants={itemVariants} whileHover={{ scale: 1.05 }}>
               <Badge className="mb-4 bg-success-100 text-success-800 border-success-200">
                 <motion.span
                   animate={{ opacity: [1, 0.5, 1] }}
@@ -256,30 +354,31 @@ export default function Index() {
                 Available for Freelance Projects
               </Badge>
             </motion.div>
-            
-            <motion.h1 
+
+            <motion.h1
               variants={itemVariants}
               className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-success-600 bg-clip-text text-transparent"
             >
               <motion.span
-                animate={{ 
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                animate={{
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
                 Expert Android Developer
               </motion.span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               variants={itemVariants}
               className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed"
             >
-              I create beautiful, high-performance mobile applications using Flutter, React Native, and native Android development. 
-              Let's bring your app ideas to life with top-notch design and functionality.
+              I create beautiful, high-performance mobile applications using
+              Flutter, React Native, and native Android development. Let's bring
+              your app ideas to life with top-notch design and functionality.
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
@@ -287,7 +386,10 @@ export default function Index() {
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-lg px-8 py-6"
+                >
                   <motion.div
                     animate={{ y: [0, -2, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
@@ -297,12 +399,16 @@ export default function Index() {
                   View My Work
                 </Button>
               </motion.div>
-              
+
               <motion.div
                 whileHover={{ scale: 1.05, rotate: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-primary text-primary hover:bg-primary hover:text-white">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="text-lg px-8 py-6 border-primary text-primary hover:bg-primary hover:text-white"
+                >
                   <motion.div
                     animate={{ rotate: [0, 5, 0] }}
                     transition={{ duration: 2, repeat: Infinity }}
@@ -318,7 +424,7 @@ export default function Index() {
       </motion.section>
 
       {/* Skills */}
-      <motion.section 
+      <motion.section
         className="py-16 px-4 bg-background/50"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -326,7 +432,7 @@ export default function Index() {
         viewport={{ once: true }}
       >
         <div className="container mx-auto">
-          <motion.h2 
+          <motion.h2
             className="text-3xl font-bold text-center mb-12"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -335,7 +441,7 @@ export default function Index() {
           >
             Tech Stack & Skills
           </motion.h2>
-          <motion.div 
+          <motion.div
             className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto"
             variants={containerVariants}
             initial="hidden"
@@ -346,16 +452,16 @@ export default function Index() {
               <motion.div
                 key={skill}
                 variants={itemVariants}
-                whileHover={{ 
-                  scale: 1.1, 
+                whileHover={{
+                  scale: 1.1,
                   rotate: [0, -5, 5, 0],
-                  boxShadow: "0 5px 15px rgba(0,0,0,0.1)"
+                  boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
                 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.2 }}
               >
-                <Badge 
-                  variant="secondary" 
+                <Badge
+                  variant="secondary"
                   className="text-sm py-2 px-4 bg-success-100 text-success-800 border-success-200 hover:bg-success-200 transition-colors cursor-pointer"
                 >
                   {skill}
@@ -367,13 +473,9 @@ export default function Index() {
       </motion.section>
 
       {/* Services */}
-      <motion.section 
-        id="services" 
-        className="py-20 px-4"
-        style={{ y }}
-      >
+      <motion.section id="services" className="py-20 px-4" style={{ y }}>
         <div className="container mx-auto">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -382,11 +484,12 @@ export default function Index() {
           >
             <h2 className="text-4xl font-bold mb-4">My Services</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Professional mobile app development services tailored to your business needs
+              Professional mobile app development services tailored to your
+              business needs
             </p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
             variants={containerVariants}
             initial="hidden"
@@ -403,9 +506,9 @@ export default function Index() {
                   <Card className="border-success-200 hover:shadow-lg transition-shadow h-full">
                     <CardHeader>
                       <motion.div
-                        whileHover={{ 
+                        whileHover={{
                           rotate: 360,
-                          scale: 1.2 
+                          scale: 1.2,
                         }}
                         transition={{ duration: 0.5 }}
                       >
@@ -414,7 +517,9 @@ export default function Index() {
                       <CardTitle className="text-xl">{service.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <CardDescription className="text-base">{service.description}</CardDescription>
+                      <CardDescription className="text-base">
+                        {service.description}
+                      </CardDescription>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -425,8 +530,8 @@ export default function Index() {
       </motion.section>
 
       {/* Portfolio */}
-      <motion.section 
-        id="portfolio" 
+      <motion.section
+        id="portfolio"
         className="py-20 px-4 bg-background/50"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -434,7 +539,7 @@ export default function Index() {
         viewport={{ once: true }}
       >
         <div className="container mx-auto">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -446,8 +551,8 @@ export default function Index() {
               Successful mobile applications delivered to satisfied clients
             </p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={containerVariants}
             initial="hidden"
@@ -464,10 +569,12 @@ export default function Index() {
                   <Card className="border-success-200 hover:shadow-lg transition-shadow">
                     <CardHeader>
                       <CardTitle className="text-xl">{project.title}</CardTitle>
-                      <CardDescription className="text-base">{project.description}</CardDescription>
+                      <CardDescription className="text-base">
+                        {project.description}
+                      </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <motion.div 
+                      <motion.div
                         className="flex flex-wrap gap-2 mb-4"
                         variants={containerVariants}
                         initial="hidden"
@@ -487,19 +594,25 @@ export default function Index() {
                         ))}
                       </motion.div>
                       <div className="flex justify-between items-center">
-                        <motion.div 
+                        <motion.div
                           className="flex items-center gap-1"
                           whileHover={{ scale: 1.1 }}
                         >
                           <motion.div
                             animate={{ rotate: [0, 360] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                            transition={{
+                              duration: 3,
+                              repeat: Infinity,
+                              ease: "linear",
+                            }}
                           >
                             <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                           </motion.div>
-                          <span className="font-semibold">{project.rating}</span>
+                          <span className="font-semibold">
+                            {project.rating}
+                          </span>
                         </motion.div>
-                        <motion.div 
+                        <motion.div
                           className="flex items-center gap-1 text-success-600"
                           whileHover={{ scale: 1.1 }}
                         >
@@ -509,7 +622,9 @@ export default function Index() {
                           >
                             <Download className="w-4 h-4" />
                           </motion.div>
-                          <span className="font-semibold">{project.downloads}</span>
+                          <span className="font-semibold">
+                            {project.downloads}
+                          </span>
                         </motion.div>
                       </div>
                     </CardContent>
@@ -522,8 +637,8 @@ export default function Index() {
       </motion.section>
 
       {/* About */}
-      <motion.section 
-        id="about" 
+      <motion.section
+        id="about"
         className="py-20 px-4"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -531,7 +646,7 @@ export default function Index() {
         viewport={{ once: true }}
       >
         <div className="container mx-auto">
-          <motion.div 
+          <motion.div
             className="grid lg:grid-cols-2 gap-12 items-center"
             variants={containerVariants}
             initial="hidden"
@@ -541,30 +656,36 @@ export default function Index() {
             <motion.div variants={itemVariants}>
               <h2 className="text-4xl font-bold mb-6">About Me</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                I'm a passionate Android developer with 5+ years of experience creating innovative mobile applications. 
-                I specialize in Flutter, React Native, and native Android development, delivering high-quality solutions 
-                that exceed client expectations.
+                I'm a passionate Android Developer with expertise in Flutter,
+                React Native, and Java/Kotlin development. Currently pursuing
+                Bachelor of Technology from Muzaffarpur Institute of Technology,
+                with hands-on experience in building production-ready mobile
+                applications.
               </p>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                My expertise includes modern architecture patterns, performance optimization, and creating intuitive user 
-                experiences. I'm committed to writing clean, maintainable code and staying up-to-date with the latest 
-                mobile development trends.
+                My experience includes internships at Olcademy and Banano
+                Technology, where I developed cross-platform food delivery and
+                healthcare applications. I specialize in Firebase integration,
+                real-time features, and creating seamless user experiences
+                across Android and iOS platforms.
               </p>
-              <motion.div 
+              <motion.div
                 className="grid grid-cols-2 gap-6"
                 variants={containerVariants}
               >
-                <motion.div 
+                <motion.div
                   className="text-center"
                   variants={itemVariants}
                   whileHover={{ scale: 1.05, y: -5 }}
                 >
                   <div className="text-3xl font-bold text-primary">
-                    <AnimatedCounter end={150} />+
+                    <AnimatedCounter end={6} />+
                   </div>
-                  <div className="text-muted-foreground">Projects Completed</div>
+                  <div className="text-muted-foreground">
+                    Projects Completed
+                  </div>
                 </motion.div>
-                <motion.div 
+                <motion.div
                   className="text-center"
                   variants={itemVariants}
                   whileHover={{ scale: 1.05, y: -5 }}
@@ -572,41 +693,43 @@ export default function Index() {
                   <div className="text-3xl font-bold text-primary">
                     <AnimatedCounter end={98} />%
                   </div>
-                  <div className="text-muted-foreground">Client Satisfaction</div>
+                  <div className="text-muted-foreground">
+                    Client Satisfaction
+                  </div>
                 </motion.div>
               </motion.div>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="bg-gradient-to-br from-success-100 to-success-200 rounded-2xl p-8 text-center"
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
                 boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-                rotate: 1
+                rotate: 1,
               }}
             >
-              <motion.div 
+              <motion.div
                 className="w-48 h-48 bg-gradient-to-br from-primary to-success-600 rounded-full mx-auto mb-6 flex items-center justify-center"
-                animate={{ 
+                animate={{
                   rotate: [0, 5, -5, 0],
-                  scale: [1, 1.05, 1]
+                  scale: [1, 1.05, 1],
                 }}
-                transition={{ 
+                transition={{
                   duration: 4,
                   repeat: Infinity,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
               >
                 <motion.div
-                  animate={{ 
+                  animate={{
                     rotate: [0, -360],
-                    scale: [1, 1.1, 1]
+                    scale: [1, 1.1, 1],
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 8,
                     repeat: Infinity,
-                    ease: "linear"
+                    ease: "linear",
                   }}
                 >
                   <Smartphone className="w-24 h-24 text-white" />
@@ -614,7 +737,8 @@ export default function Index() {
               </motion.div>
               <h3 className="text-2xl font-bold mb-2">Mobile First Approach</h3>
               <p className="text-muted-foreground">
-                Every app I build is designed with mobile-first principles, ensuring optimal performance and user experience.
+                Every app I build is designed with mobile-first principles,
+                ensuring optimal performance and user experience.
               </p>
             </motion.div>
           </motion.div>
@@ -622,8 +746,8 @@ export default function Index() {
       </motion.section>
 
       {/* Contact */}
-      <motion.section 
-        id="contact" 
+      <motion.section
+        id="contact"
         className="py-20 px-4 bg-background/50"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -631,7 +755,7 @@ export default function Index() {
         viewport={{ once: true }}
       >
         <div className="container mx-auto">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -640,11 +764,12 @@ export default function Index() {
           >
             <h2 className="text-4xl font-bold mb-4">Let's Work Together</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Ready to bring your mobile app idea to life? Get in touch and let's discuss your project.
+              Ready to bring your mobile app idea to life? Get in touch and
+              let's discuss your project.
             </p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto"
             variants={containerVariants}
             initial="hidden"
@@ -652,9 +777,9 @@ export default function Index() {
             viewport={{ once: true }}
           >
             {[
-              { icon: Mail, title: "Email", info: "your.email@example.com" },
-              { icon: Phone, title: "Phone", info: "+1 (555) 123-4567" },
-              { icon: MapPin, title: "Location", info: "Available Worldwide" }
+              { icon: Mail, title: "Email", info: "mayurrajj222@gmail.com" },
+              { icon: Phone, title: "Phone", info: "+91 7464072321" },
+              { icon: MapPin, title: "Location", info: "Muzaffarpur, Bihar" },
             ].map((contact, index) => (
               <motion.div
                 key={index}
@@ -665,9 +790,9 @@ export default function Index() {
                   <Card className="text-center border-success-200">
                     <CardHeader>
                       <motion.div
-                        whileHover={{ 
+                        whileHover={{
                           rotate: [0, -10, 10, 0],
-                          scale: 1.2 
+                          scale: 1.2,
                         }}
                         transition={{ duration: 0.5 }}
                       >
@@ -683,23 +808,23 @@ export default function Index() {
               </motion.div>
             ))}
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="text-center mt-12"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-lg px-8 py-6"
+              >
                 <motion.div
-                  animate={{ 
+                  animate={{
                     rotate: [0, 10, 0],
-                    x: [0, 2, 0]
+                    x: [0, 2, 0],
                   }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
@@ -713,7 +838,7 @@ export default function Index() {
       </motion.section>
 
       {/* Footer */}
-      <motion.footer 
+      <motion.footer
         className="border-t bg-background py-12 px-4"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -721,7 +846,7 @@ export default function Index() {
         viewport={{ once: true }}
       >
         <div className="container mx-auto">
-          <motion.div 
+          <motion.div
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
             variants={containerVariants}
             initial="hidden"
@@ -729,32 +854,43 @@ export default function Index() {
             viewport={{ once: true }}
           >
             <motion.div variants={itemVariants}>
-              <motion.div 
+              <motion.div
                 className="text-2xl font-bold text-primary mb-4"
                 whileHover={{ scale: 1.05 }}
               >
-                DevAndroid
+                Mayur Raj
               </motion.div>
               <p className="text-muted-foreground">
-                Expert Android developer creating beautiful, high-performance mobile applications.
+                Android Developer specializing in Flutter, React Native, and
+                cross-platform mobile applications.
               </p>
             </motion.div>
-            
+
             {[
               {
                 title: "Services",
-                items: ["Android Development", "Flutter Apps", "React Native", "UI/UX Implementation"]
+                items: [
+                  "React Native Apps",
+                  "Flutter Development",
+                  "Firebase Integration",
+                  "Cross-Platform UI",
+                ],
               },
               {
-                title: "Technologies", 
-                items: ["Kotlin & Java", "Dart & Flutter", "React Native", "Firebase & APIs"]
-              }
+                title: "Technologies",
+                items: [
+                  "Flutter & Dart",
+                  "React Native",
+                  "Java & Kotlin",
+                  "Firebase & Supabase",
+                ],
+              },
             ].map((section, index) => (
               <motion.div key={index} variants={itemVariants}>
                 <h3 className="font-semibold mb-4">{section.title}</h3>
                 <ul className="space-y-2 text-muted-foreground">
                   {section.items.map((item, itemIndex) => (
-                    <motion.li 
+                    <motion.li
                       key={item}
                       whileHover={{ x: 5, color: "hsl(142, 76%, 36%)" }}
                       transition={{ duration: 0.2 }}
@@ -765,17 +901,17 @@ export default function Index() {
                 </ul>
               </motion.div>
             ))}
-            
+
             <motion.div variants={itemVariants}>
               <h3 className="font-semibold mb-4">Connect</h3>
               <div className="flex space-x-4">
                 {[Github, Linkedin, Mail].map((Icon, index) => (
                   <motion.div
                     key={index}
-                    whileHover={{ 
-                      scale: 1.2, 
+                    whileHover={{
+                      scale: 1.2,
                       rotate: 360,
-                      backgroundColor: "hsl(142, 76%, 36%)"
+                      backgroundColor: "hsl(142, 76%, 36%)",
                     }}
                     whileTap={{ scale: 0.9 }}
                     transition={{ duration: 0.3 }}
@@ -788,15 +924,15 @@ export default function Index() {
               </div>
             </motion.div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="border-t mt-8 pt-8 text-center text-muted-foreground"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            <p>&copy; 2024 DevAndroid. All rights reserved.</p>
+            <p>&copy; 2024 Mayur Raj. All rights reserved.</p>
           </motion.div>
         </div>
       </motion.footer>
