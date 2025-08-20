@@ -750,25 +750,25 @@ export default function Index() {
             viewport={{ once: true }}
           >
             <motion.div variants={itemVariants}>
-              <motion.div 
+              <motion.div
                 className="text-2xl font-bold text-primary mb-4"
                 whileHover={{ scale: 1.05 }}
               >
-                DevAndroid
+                Mayur Raj
               </motion.div>
               <p className="text-muted-foreground">
-                Expert Android developer creating beautiful, high-performance mobile applications.
+                Android Developer specializing in Flutter, React Native, and cross-platform mobile applications.
               </p>
             </motion.div>
             
             {[
               {
                 title: "Services",
-                items: ["Android Development", "Flutter Apps", "React Native", "UI/UX Implementation"]
+                items: ["React Native Apps", "Flutter Development", "Firebase Integration", "Cross-Platform UI"]
               },
               {
-                title: "Technologies", 
-                items: ["Kotlin & Java", "Dart & Flutter", "React Native", "Firebase & APIs"]
+                title: "Technologies",
+                items: ["Flutter & Dart", "React Native", "Java & Kotlin", "Firebase & Supabase"]
               }
             ].map((section, index) => (
               <motion.div key={index} variants={itemVariants}>
@@ -817,7 +817,7 @@ export default function Index() {
             transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            <p>&copy; 2024 DevAndroid. All rights reserved.</p>
+            <p>&copy; 2024 Mayur Raj. All rights reserved.</p>
           </motion.div>
         </div>
       </motion.footer>
