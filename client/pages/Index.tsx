@@ -79,23 +79,23 @@ export default function Index() {
   const services = [
     {
       icon: Smartphone,
-      title: "Native Android Development",
-      description: "High-performance native Android apps using Kotlin and Java with modern architecture patterns."
+      title: "React Native Development",
+      description: "Cross-platform food delivery and healthcare apps with user authentication, real-time features, and clean UI design."
     },
     {
       icon: Palette,
-      title: "Cross-Platform Apps",
-      description: "Beautiful Flutter and React Native apps that work seamlessly across iOS and Android."
+      title: "Flutter Development",
+      description: "Beautiful Flutter apps including chat applications, games using Flame engine, and university result systems."
     },
     {
       icon: Zap,
-      title: "Performance Optimization",
-      description: "Speed up your existing apps with advanced optimization techniques and best practices."
+      title: "Firebase Integration",
+      description: "Expert in Firebase authentication, Firestore database, real-time messaging, and secure backend services."
     },
     {
       icon: Users,
-      title: "UI/UX Implementation",
-      description: "Convert designs into pixel-perfect, responsive mobile interfaces with smooth animations."
+      title: "Mobile App Architecture",
+      description: "Modern architecture patterns with clean code, efficient state management, and seamless user experiences."
     }
   ];
 
