@@ -101,25 +101,46 @@ export default function Index() {
 
   const portfolio = [
     {
-      title: "E-Commerce Mobile App",
-      description: "Full-featured shopping app with payment integration",
-      tech: ["Flutter", "Firebase", "Stripe"],
+      title: "Food Delivery App",
+      description: "React Native food ordering app with real-time menu display, cart management, and order tracking",
+      tech: ["React Native", "Firebase", "Expo"],
       rating: 4.9,
-      downloads: "50K+"
+      downloads: "Live"
     },
     {
-      title: "Social Media Platform",
-      description: "Real-time messaging and content sharing app",
-      tech: ["React Native", "GraphQL", "AWS"],
+      title: "REMIT Chat App",
+      description: "Secure real-time chat app with double authentication and dynamic message storage",
+      tech: ["Flutter", "Firebase", "Supabase"],
       rating: 4.8,
-      downloads: "100K+"
+      downloads: "Live"
     },
     {
-      title: "Fitness Tracking App",
-      description: "Health monitoring with wearable device integration",
-      tech: ["Kotlin", "Room DB", "BLE"],
+      title: "Super Mario Game",
+      description: "2D Super Mario-style game with character movement, collisions, and scoring system",
+      tech: ["Flutter", "Flame Engine"],
       rating: 4.7,
-      downloads: "25K+"
+      downloads: "Demo"
+    },
+    {
+      title: "Weather App",
+      description: "Mobile weather app with real-time data, location-based forecasts, and clean responsive UI",
+      tech: ["React Native", "Expo", "API"],
+      rating: 4.6,
+      downloads: "Live"
+    },
+    {
+      title: "BEU Pro Result",
+      description: "University app for students to access notices, results, and academic resources",
+      tech: ["Flutter"],
+      rating: 4.8,
+      downloads: "Live"
+    },
+    {
+      title: "Healthcare App",
+      description: "Medical app with authentication, test report uploads, user reviews, and real-time chat",
+      tech: ["React Native", "Firebase"],
+      rating: 4.7,
+      downloads: "In Development"
     }
   ];
 
