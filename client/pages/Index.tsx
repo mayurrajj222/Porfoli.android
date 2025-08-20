@@ -562,14 +562,14 @@ export default function Index() {
             <motion.div variants={itemVariants}>
               <h2 className="text-4xl font-bold mb-6">About Me</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                I'm a passionate Android developer with 5+ years of experience creating innovative mobile applications. 
-                I specialize in Flutter, React Native, and native Android development, delivering high-quality solutions 
-                that exceed client expectations.
+                I'm a passionate Android Developer with expertise in Flutter, React Native, and Java/Kotlin development.
+                Currently pursuing Bachelor of Technology from Muzaffarpur Institute of Technology, with hands-on experience
+                in building production-ready mobile applications.
               </p>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                My expertise includes modern architecture patterns, performance optimization, and creating intuitive user 
-                experiences. I'm committed to writing clean, maintainable code and staying up-to-date with the latest 
-                mobile development trends.
+                My experience includes internships at Olcademy and Banano Technology, where I developed cross-platform
+                food delivery and healthcare applications. I specialize in Firebase integration, real-time features,
+                and creating seamless user experiences across Android and iOS platforms.
               </p>
               <motion.div 
                 className="grid grid-cols-2 gap-6"
@@ -581,7 +581,7 @@ export default function Index() {
                   whileHover={{ scale: 1.05, y: -5 }}
                 >
                   <div className="text-3xl font-bold text-primary">
-                    <AnimatedCounter end={150} />+
+                    <AnimatedCounter end={6} />+
                   </div>
                   <div className="text-muted-foreground">Projects Completed</div>
                 </motion.div>
